@@ -27,9 +27,10 @@ class HomelatestItem extends StatelessWidget {
         children: [
           ListView.builder(
             shrinkWrap: true,
-            itemCount: news!.length,
+            itemCount: news?.length,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              final item = news[index];
+              final item = news![index];
               return NewsItem(news: item);
             },
           ),

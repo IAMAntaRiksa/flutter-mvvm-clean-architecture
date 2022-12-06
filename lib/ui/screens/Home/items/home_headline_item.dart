@@ -29,7 +29,7 @@ class HomeHeadLineItem extends StatelessWidget {
         children: [
           SizedBox(
             width: deviceWidth(context),
-            height: deviceHeight(context) * 0.42,
+            height: deviceHeight(context) * 0.23,
             child: Stack(
               fit: StackFit.expand,
               children: [

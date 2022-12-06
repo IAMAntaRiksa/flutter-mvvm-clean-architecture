@@ -30,6 +30,7 @@ class NewsProvider with ChangeNotifier {
   bool get onSearch => _onSearch;
 
   /// Dependecy Injection
+
   final newsServices = getIt<NewsServices>();
 
   /// ================================
@@ -44,10 +45,12 @@ class NewsProvider with ChangeNotifier {
   void getHeadLines() async {
     await Future.delayed(const Duration(milliseconds: 100));
     setOnSearch(true);
+
     var filter = FilterNewsModel();
     filter.country = "id";
-
+    filter.limit = 10;
     var response = await newsServices.getHeadLine(param: filter.toJson());
+    _headlines = [];
     _headlines = response;
 
     setOnSearch(false);
@@ -58,12 +61,13 @@ class NewsProvider with ChangeNotifier {
   void getNews() async {
     await Future.delayed(const Duration(milliseconds: 100));
     setOnSearch(true);
+
     var filter = FilterNewsModel();
     filter.page = page;
     filter.country = "id";
+    filter.limit = 10;
 
     var response = await newsServices.getHeadLine(param: filter.toJson());
-    _headlines = response;
 
     if (_page == 1) {
       _news = [];
@@ -92,6 +96,7 @@ class NewsProvider with ChangeNotifier {
   }
 
   void clearNews() {
+    _news = null;
     _page = 1;
     notifyListeners();
   }

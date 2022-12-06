@@ -2,8 +2,9 @@ class FilterNewsModel {
   String? country;
   int? page;
   String? query;
+  int? limit;
 
-  FilterNewsModel({this.country, this.page, this.query});
+  FilterNewsModel({this.country, this.page, this.query, this.limit});
 
   Map<String, dynamic> toJson() {
     Map<String, dynamic> param = {};
@@ -16,6 +17,9 @@ class FilterNewsModel {
     }
     if (country != null) {
       param['q'] = query;
+    }
+    if (limit != null) {
+      param['pageSize'] = limit;
     }
     return param;
   }

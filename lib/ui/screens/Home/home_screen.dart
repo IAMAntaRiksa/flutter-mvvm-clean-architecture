@@ -35,6 +35,7 @@ class _HomeBodyState extends State<HomeBody> {
   _scrollistener() {
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
+      print('read obk');
       NewsProvider.instance(context).getNews();
     }
   }

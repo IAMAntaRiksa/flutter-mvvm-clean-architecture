@@ -8,8 +8,10 @@ class NewsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(7),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(0.1),
