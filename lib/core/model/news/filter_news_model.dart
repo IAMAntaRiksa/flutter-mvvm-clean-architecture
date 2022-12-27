@@ -15,7 +15,7 @@ class FilterNewsModel {
     if (page != null) {
       param['page'] = page;
     }
-    if (country != null) {
+    if (query != null) {
       param['q'] = query;
     }
     if (limit != null) {

@@ -1,15 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/viewmodels/news/news_provider.dart';
+import 'package:flutter_app/core/viewmodels/news/search_provider.dart';
+import 'package:flutter_app/ui/router/router_list.dart';
 import 'package:flutter_app/ui/screens/Home/items/home_latest_item.dart';
 import 'items/home_headline_item.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void goToSearch() {
+    SearchProvider.instance(context).clearSearch();
+    Navigator.pushNamed(context, routeSearch);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            tooltip: 'Open search data',
+            onPressed: () => goToSearch(),
+          ),
+        ],
+      ),
       body: const HomeBody(),
     );
   }
@@ -35,7 +55,6 @@ class _HomeBodyState extends State<HomeBody> {
   _scrollistener() {
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
-      print('read obk');
       NewsProvider.instance(context).getNews();
     }
   }

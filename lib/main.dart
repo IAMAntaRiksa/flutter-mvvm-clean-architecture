@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter MVVM',
         theme: ThemeData(
           primarySwatch: Colors.blue,
